@@ -1,0 +1,58 @@
+version: 2.1
+
+commands:
+  yarn-install-pretty-lint-tsc-build:
+    steps:
+      - run:
+          name: yarn install
+          command: yarn install
+      - run:
+          name: yarn prettier
+          command: yarn prettier -c ./src 
+      - run:
+          name: yarn lint
+          command: yarn lint
+      - run:
+          name: type checking and declarations
+          command: yarn tsc
+      - run:
+          name: build package
+          command: |
+            yarn build  
+jobs:
+  test:
+    docker:
+      - image: cimg/node:14.15.1
+    steps:
+      - checkout
+      - yarn-install-pretty-lint-tsc-build
+
+  publish:
+    docker:
+      - image: cimg/node:14.15.1
+    steps:
+      - checkout
+      - run:
+          name: envsubst
+          command: envsubst < package.json > package.json.tmp && mv package.json.tmp package.json 
+      - yarn-install-pretty-lint-tsc-build
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ./.npmrc
+      - run:
+          name: publish
+          command: yarn publish 
+          
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
+  build-n-publish:
+    jobs:
+      - publish:
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /^[0-9]+(\.[0-9]+)*(-.*)*$/
