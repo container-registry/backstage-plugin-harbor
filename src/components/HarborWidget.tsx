@@ -16,7 +16,7 @@ const Widget = ({ entity }: { entity: Entity }) => {
   return (
     <Card>
       <CardHeader title="Docker Image" />
-      <HarborRepository project={info[0]} repository={info[1]} widget={true} />
+      <HarborRepository project={info[0]} repository={info[1]} widget />
     </Card>
   );
 };
