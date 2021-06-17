@@ -30,6 +30,7 @@
     "react-data-table-component": "^6.11.7",
     "react-dom": "^16.13.1",
     "react-router": "^5.2.0",
+    "react-router-dom": "^5.2.0",
     "react-use": "^17.2.4"
   },
   "devDependencies": {
