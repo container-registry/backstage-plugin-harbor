@@ -1,10 +1,10 @@
-import { createApiRef, DiscoveryApi } from '@backstage/core';
+import { createApiRef, DiscoveryApi } from "@backstage/core";
 
 export interface harborApi {}
 
 export const harborApiRef = createApiRef<harborApi>({
-  id: 'plugin.harbor.service',
-  description: 'Used by the Harbor plugin to make requests',
+  id: "plugin.harbor.service",
+  description: "Used by the Harbor plugin to make requests",
 });
 
 export type Options = {

@@ -1,24 +1,24 @@
-import { Entity } from '@backstage/catalog-model';
+import { Entity } from "@backstage/catalog-model";
 import {
   createApiFactory,
   createPlugin,
   createRoutableExtension,
   createRouteRef,
   discoveryApiRef,
-} from '@backstage/core';
+} from "@backstage/core";
 
-import { HarborApiClient, harborApiRef } from './api';
-import { HARBOR_ANNOTATION_REPOSITORY } from './components/useHarborAppData';
+import { HarborApiClient, harborApiRef } from "./api";
+import { HARBOR_ANNOTATION_REPOSITORY } from "./components/useHarborAppData";
 
 export const isHarborAvailable = (entity: Entity) =>
   Boolean(entity?.metadata.annotations?.[HARBOR_ANNOTATION_REPOSITORY]);
 
 export const entityContentRouteRef = createRouteRef({
-  title: 'Harbor Entity Content',
+  title: "Harbor Entity Content",
 });
 
 export const harborPlugin = createPlugin({
-  id: 'harbor',
+  id: "harbor",
   apis: [
     createApiFactory({
       api: harborApiRef,
@@ -33,7 +33,7 @@ export const harborPlugin = createPlugin({
 
 export const HarborPage = harborPlugin.provide(
   createRoutableExtension({
-    component: () => import('./Router').then(m => m.Router),
+    component: () => import("./Router").then((m) => m.Router),
     mountPoint: entityContentRouteRef,
-  }),
+  })
 );

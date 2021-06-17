@@ -1,8 +1,8 @@
-import React from 'react';
-import DataTable from 'react-data-table-component';
-import { columns } from './tableHeadings';
-import ReactSpeedometer from 'react-d3-speedometer';
-import { Card, CardActions, Button } from '@material-ui/core';
+import React from "react";
+import DataTable from "react-data-table-component";
+import { columns } from "./tableHeadings";
+import ReactSpeedometer from "react-d3-speedometer";
+import { Card, CardActions, Button } from "@material-ui/core";
 
 class HarborRepository extends React.Component<any, any> {
   constructor(props: any) {
@@ -11,19 +11,19 @@ class HarborRepository extends React.Component<any, any> {
     this.state = {
       isLoaded: false,
       data: null,
-      repoUrl: '',
+      repoUrl: "",
     };
   }
 
   async componentDidMount() {
     let backendUrl = window.location.origin;
-    if (backendUrl.includes('3000')) {
-      backendUrl = backendUrl.replace('3000', '7000');
+    if (backendUrl.includes("3000")) {
+      backendUrl = backendUrl.replace("3000", "7000");
     }
 
     const response = await fetch(
-      `${backendUrl}/api/harbor/artifacts?project=${this.props.project}&repository=${this.props.repository}`,
-    ).then(res => res.json());
+      `${backendUrl}/api/harbor/artifacts?project=${this.props.project}&repository=${this.props.repository}`
+    ).then((res) => res.json());
 
     this.setState({
       isLoaded: true,
@@ -43,19 +43,19 @@ class HarborRepository extends React.Component<any, any> {
       let severityNumber: number = 0;
       const severityText: string = data?.[0].vulnerabilities.severity;
       switch (severityText) {
-        case 'Low':
+        case "Low":
           severityNumber = 150;
           break;
 
-        case 'Medium':
+        case "Medium":
           severityNumber = 250;
           break;
 
-        case 'High':
+        case "High":
           severityNumber = 350;
           break;
 
-        case 'Critical':
+        case "Critical":
           severityNumber = 450;
           break;
 
@@ -67,9 +67,9 @@ class HarborRepository extends React.Component<any, any> {
       return (
         <div
           style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
           <ReactSpeedometer
@@ -78,29 +78,29 @@ class HarborRepository extends React.Component<any, any> {
             minValue={0}
             maxValue={500}
             segmentColors={[
-              '#6ad72d',
-              '#ade228',
-              '#ecdb23',
-              '#f6961e',
-              '#ff471a',
+              "#6ad72d",
+              "#ade228",
+              "#ecdb23",
+              "#f6961e",
+              "#ff471a",
             ]}
             customSegmentStops={[0, 100, 200, 300, 400, 500]}
             currentValueText="vulnerability levels"
             customSegmentLabels={[
               {
-                text: 'None',
+                text: "None",
               },
               {
-                text: 'Low',
+                text: "Low",
               },
               {
-                text: 'Medium',
+                text: "Medium",
               },
               {
-                text: 'High',
+                text: "High",
               },
               {
-                text: 'Critical',
+                text: "Critical",
               },
             ]}
           />
