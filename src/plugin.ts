@@ -2,6 +2,7 @@ import { Entity } from "@backstage/catalog-model";
 import {
   createApiFactory,
   createPlugin,
+  createComponentExtension,
   createRoutableExtension,
   createRouteRef,
   discoveryApiRef,
@@ -36,4 +37,12 @@ export const HarborPage = harborPlugin.provide(
     component: () => import("./Router").then((m) => m.Router),
     mountPoint: entityContentRouteRef,
   })
+);
+
+export const EntityHarborCard = harborPlugin.provide(
+  createComponentExtension({
+    component: {
+      lazy: () => import('./components/HarborWidget').then(m => m.HarborWidget),
+    },
+  }),
 );
