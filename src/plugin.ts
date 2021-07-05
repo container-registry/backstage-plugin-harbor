@@ -42,7 +42,8 @@ export const HarborPage = harborPlugin.provide(
 export const EntityHarborCard = harborPlugin.provide(
   createComponentExtension({
     component: {
-      lazy: () => import('./components/HarborWidget').then(m => m.HarborWidget),
+      lazy: () =>
+        import("./components/HarborWidget").then((m) => m.HarborWidget),
     },
-  }),
+  })
 );
