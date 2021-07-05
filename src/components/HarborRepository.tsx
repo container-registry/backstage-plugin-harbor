@@ -138,7 +138,7 @@ function HarborRepository(props: RepositoryProps) {
 }
 
 interface RepositoryProps {
-  widget: any;
+  widget: boolean;
   project: string;
   repository: string;
 }
