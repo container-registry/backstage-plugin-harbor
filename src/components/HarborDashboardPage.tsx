@@ -11,7 +11,7 @@ export const HarborDashboardPage = ({ entity }: { entity: Entity }) => {
 
   return (
     <InfoCard title="Harbor Dashboard">
-      <HarborRepository project={info[0]} repository={info[1]} />
+      <HarborRepository project={info[0]} repository={info[1]} widget={false} />
     </InfoCard>
   );
 };
