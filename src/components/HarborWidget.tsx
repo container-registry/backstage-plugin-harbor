@@ -8,6 +8,7 @@ import {
   useHarborAppData,
 } from "./useHarborAppData";
 import { isHarborAvailable } from "../plugin";
+import { useEntity } from "@backstage/plugin-catalog-react";
 
 const Widget = ({ entity }: { entity: Entity }) => {
   const { repositorySlug } = useHarborAppData({ entity });
@@ -21,12 +22,12 @@ const Widget = ({ entity }: { entity: Entity }) => {
   );
 };
 
-export const HarborWidget = ({ entity }: { entity: Entity }) => {
+export const HarborWidget = () => {
+  const { entity } = useEntity();
+
   return !isHarborAvailable(entity) ? (
     <MissingAnnotationEmptyState annotation={HARBOR_ANNOTATION_REPOSITORY} />
   ) : (
-    //   <ErrorBoundary>
     <Widget entity={entity} />
-    //   </ErrorBoundary>
   );
 };

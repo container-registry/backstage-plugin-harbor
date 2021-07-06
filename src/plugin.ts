@@ -39,7 +39,7 @@ export const EntityHarborContent = harborPlugin.provide(
   })
 );
 
-export const EntityHarborCard = harborPlugin.provide(
+export const EntityHarborWidgetCard = harborPlugin.provide(
   createComponentExtension({
     component: {
       lazy: () =>
