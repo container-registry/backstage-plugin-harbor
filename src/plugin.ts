@@ -32,7 +32,7 @@ export const harborPlugin = createPlugin({
   },
 });
 
-export const HarborPage = harborPlugin.provide(
+export const EntityHarborContent = harborPlugin.provide(
   createRoutableExtension({
     component: () => import("./Router").then((m) => m.Router),
     mountPoint: entityContentRouteRef,
