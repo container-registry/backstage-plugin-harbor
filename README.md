@@ -82,7 +82,7 @@ import harbor from './plugins/harbor';
 async function main() {
   // ...
   const harborEnv = useHotMemoize(module, () => createEnv('harbor'));
-  apiRouter.use('/harbor', await harborusage(harborEnv));
+  apiRouter.use('/harbor', await harbor(harborEnv));
 
 ```
 
