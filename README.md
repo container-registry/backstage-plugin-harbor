@@ -21,7 +21,11 @@ export { plugin as harbor } from '@bestsellerit/backstage-plugin-harbor';
 ```
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
-import { Router as HarborRouter } from '@bestsellerit/backstage-plugin-harbor';
+import {
+  Router as HarborRouter,
+  isHarborAvailable,
+  HarborWidget,
+} from '@bestsellerit/backstage-plugin-harbor';
 
 const serviceEntityPage = (
   <EntityPageLayout>
