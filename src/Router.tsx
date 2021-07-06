@@ -8,6 +8,7 @@ import { isHarborAvailable } from "./plugin";
 
 export const Router = () => {
   const { entity } = useEntity();
+
   return !isHarborAvailable(entity) ? (
     <MissingAnnotationEmptyState annotation={HARBOR_ANNOTATION_REPOSITORY} />
   ) : (

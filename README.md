@@ -21,7 +21,11 @@ export { plugin as harbor } from '@bestsellerit/backstage-plugin-harbor';
 ```
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
-import { Router as HarborRouter } from '@bestsellerit/backstage-plugin-harbor';
+import {
+  Router as HarborRouter,
+  isHarborAvailable,
+  HarborWidget,
+} from '@bestsellerit/backstage-plugin-harbor';
 
 const serviceEntityPage = (
   <EntityPageLayout>
@@ -82,7 +86,7 @@ import harbor from './plugins/harbor';
 async function main() {
   // ...
   const harborEnv = useHotMemoize(module, () => createEnv('harbor'));
-  apiRouter.use('/harbor', await harborusage(harborEnv));
+  apiRouter.use('/harbor', await harbor(harborEnv));
 
 ```
 

@@ -1,7 +1,7 @@
 export {
   harborPlugin as plugin,
   isHarborAvailable,
-  EntityHarborCard,
+  EntityHarborWidgetCard,
   EntityHarborContent,
 } from "./plugin";
 export * from "./api";
