@@ -32,7 +32,6 @@ export const HarborWidget = () => {
   );
 };
 
-
 export const HarborWidgetEntity = ({ entity }: { entity: Entity }) => {
   return !isHarborAvailable(entity) ? (
     <MissingAnnotationEmptyState annotation={HARBOR_ANNOTATION_REPOSITORY} />
@@ -40,5 +39,3 @@ export const HarborWidgetEntity = ({ entity }: { entity: Entity }) => {
     <Widget entity={entity} />
   );
 };
-
-
