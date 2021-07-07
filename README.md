@@ -22,9 +22,9 @@ export { plugin as harbor } from '@bestsellerit/backstage-plugin-harbor';
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
 import {
-  Router as HarborRouter,
+  EntityHarborContent,
+  EntityHarborWidgetCard,
   isHarborAvailable,
-  HarborWidget,
 } from '@bestsellerit/backstage-plugin-harbor';
 
 const serviceEntityPage = (
@@ -47,7 +47,7 @@ const overviewContent = (
     <EntitySwitch>
       <EntitySwitch.Case if={isHarborAvailable}>
         <Grid item>
-         <EntityHarborCard/>
+         <EntityHarborWidgetCard/>
         </Grid>
       </EntitySwitch.Case>
     </EntitySwitch>
