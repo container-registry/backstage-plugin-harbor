@@ -31,3 +31,14 @@ export const HarborWidget = () => {
     <Widget entity={entity} />
   );
 };
+
+
+export const HarborWidgetEntity = ({ entity }: { entity: Entity }) => {
+  return !isHarborAvailable(entity) ? (
+    <MissingAnnotationEmptyState annotation={HARBOR_ANNOTATION_REPOSITORY} />
+  ) : (
+    <Widget entity={entity} />
+  );
+};
+
+
