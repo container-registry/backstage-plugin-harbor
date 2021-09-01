@@ -1,6 +1,6 @@
 import React from "react";
 import { Card, CardHeader } from "@material-ui/core";
-import { MissingAnnotationEmptyState } from "@backstage/core";
+import { MissingAnnotationEmptyState } from "@backstage/core-components";
 import { Entity } from "@backstage/catalog-model";
 import { HarborRepository } from "./HarborRepository";
 import {

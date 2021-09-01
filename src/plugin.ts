@@ -6,7 +6,7 @@ import {
   createRoutableExtension,
   createRouteRef,
   discoveryApiRef,
-} from "@backstage/core";
+} from "@backstage/core-plugin-api";
 
 import { HarborApiClient, harborApiRef } from "./api";
 import { HARBOR_ANNOTATION_REPOSITORY } from "./components/useHarborAppData";

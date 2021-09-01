@@ -1,6 +1,6 @@
 import React from "react";
 import { Entity } from "@backstage/catalog-model";
-import { InfoCard } from "@backstage/core";
+import { InfoCard } from "@backstage/core-components";
 
 import { HarborRepository } from "./HarborRepository";
 import { useHarborAppData } from "./useHarborAppData";
