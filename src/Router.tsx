@@ -1,8 +1,8 @@
-import React from 'react';
-import { Entity } from '@backstage/catalog-model';
-import { useEntity } from '@backstage/plugin-catalog-react';
-import { Route } from 'react-router';
-import { FlatRoutes } from '@backstage/core-app-api';
+import React from "react";
+import { Entity } from "@backstage/catalog-model";
+import { useEntity } from "@backstage/plugin-catalog-react";
+import { Route } from "react-router";
+import { FlatRoutes } from "@backstage/core-app-api";
 import { MissingAnnotationEmptyState } from "@backstage/core-components";
 import { HarborDashboardPage } from "./components/HarborDashboardPage";
 import { HARBOR_ANNOTATION_REPOSITORY } from "./components/useHarborAppData";
