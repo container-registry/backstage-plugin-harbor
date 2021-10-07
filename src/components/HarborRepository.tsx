@@ -34,12 +34,12 @@ function HarborRepository(props: RepositoryProps) {
 
     setTimeout(() => {
       setLoading(true);
-    }, 3000);
+    }, 1000);
   }, [props.project, props.repository]);
 
   const theme = getTheme();
 
-  if (!loading) {
+  if (!loading && Object.keys(repository).length > 0) {
     return <div>Loading...</div>;
   }
   if (error) {
@@ -48,7 +48,7 @@ function HarborRepository(props: RepositoryProps) {
 
   if (props.widget) {
     let severityNumber: number = 0;
-    const severityText: string = repository?.[0].vulnerabilities.severity;
+    const severityText: string = repository[0]?.vulnerabilities.severity;
     switch (severityText) {
       case "Low":
         severityNumber = 150;
@@ -120,7 +120,7 @@ function HarborRepository(props: RepositoryProps) {
       <Card>
         <CardActions>
           <Button size="small">
-            <a href={repository[0].repoUrl}>Learn More</a>
+            <a href={repository[0]?.repoUrl}>Learn More</a>
           </Button>
         </CardActions>
       </Card>
