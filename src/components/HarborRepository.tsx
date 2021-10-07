@@ -34,7 +34,7 @@ function HarborRepository(props: RepositoryProps) {
 
     setTimeout(() => {
       setLoading(true);
-    }, 10000);
+    }, 3000);
   }, [props.project, props.repository]);
 
   const theme = getTheme();
