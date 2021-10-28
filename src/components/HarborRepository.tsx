@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { BackstageTheme } from '@backstage/theme';
 import DataTable from "react-data-table-component";
 import { columns } from "./tableHeadings";
 import ReactSpeedometer from "react-d3-speedometer";
-import { Card, CardActions, Button } from "@material-ui/core";
-import { getTheme } from "./theme";
+import { Card, CardActions, Button, useTheme } from "@material-ui/core";
 
 function HarborRepository(props: RepositoryProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
   const [repository, setRepository] = useState<Repository[]>([]);
+
+  const theme = useTheme<BackstageTheme>();
+  const mode = theme.palette.type === 'dark' ? 'dark' : 'light';
 
   useEffect(() => {
     setLoading(false);
@@ -37,7 +40,6 @@ function HarborRepository(props: RepositoryProps) {
     }, 3000);
   }, [props.project, props.repository]);
 
-  const theme = getTheme();
 
   if (!loading) {
     return <div>Loading...</div>;
@@ -125,7 +127,7 @@ function HarborRepository(props: RepositoryProps) {
         </CardActions>
       </Card>
       <DataTable
-        theme={theme}
+        theme={mode}
         striped
         title="Docker Images"
         columns={columns}
