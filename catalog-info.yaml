@@ -1,0 +1,12 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: backstage-plugin-gkeusage
+  annotations: 
+    github.com/project-slug: BESTSELLER/backstage-plugin-gkeusage
+    circleci.com/project-slug: github/BESTSELLER/backstage-plugin-gkeusage
+    sonarqube.org/project-key: BESTSELLER_backstage-plugin-gkeusage
+spec:
+  type: library
+  lifecycle: production
+  owner: engineering-services
