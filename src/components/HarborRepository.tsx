@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BackstageTheme } from '@backstage/theme';
+import { BackstageTheme } from "@backstage/theme";
 import DataTable from "react-data-table-component";
 import { columns } from "./tableHeadings";
 import ReactSpeedometer from "react-d3-speedometer";
@@ -12,7 +12,7 @@ function HarborRepository(props: RepositoryProps) {
   const [repository, setRepository] = useState<Repository[]>([]);
 
   const theme = useTheme<BackstageTheme>();
-  const mode = theme.palette.type === 'dark' ? 'dark' : 'light';
+  const mode = theme.palette.type === "dark" ? "dark" : "light";
 
   useEffect(() => {
     setLoading(false);
@@ -39,7 +39,6 @@ function HarborRepository(props: RepositoryProps) {
       setLoading(true);
     }, 1000);
   }, [props.project, props.repository]);
-
 
   if (!loading && Object.keys(repository).length > 0) {
     return <div>Loading...</div>;
