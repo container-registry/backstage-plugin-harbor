@@ -9,9 +9,12 @@ export const HarborDashboardPage = ({ entity }: { entity: Entity }) => {
   const { repositorySlug } = useHarborAppData({ entity });
   const info = repositorySlug.split("/");
 
+  const project = info.shift() as "string";
+  const repository = info.join("/");
+
   return (
     <InfoCard title="Harbor Dashboard">
-      <HarborRepository project={info[0]} repository={info[1]} widget={false} />
+      <HarborRepository project={project} repository={repository} widget={false} />
     </InfoCard>
   );
 };
