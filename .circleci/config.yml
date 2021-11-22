@@ -22,14 +22,14 @@ commands:
 jobs:
   test:
     docker:
-      - image: cimg/node:14.15.1
+      - image: cimg/node:14.17.0
     steps:
       - checkout
       - yarn-install-pretty-lint-tsc-build
 
   publish:
     docker:
-      - image: cimg/node:14.15.1
+      - image: cimg/node:14.17.0
     steps:
       - checkout
       - run:
