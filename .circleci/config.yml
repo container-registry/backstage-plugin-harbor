@@ -22,19 +22,16 @@ commands:
 jobs:
   test:
     docker:
-      - image: cimg/node:14.17.0
+      - image: cimg/node:14.17
     steps:
       - checkout
       - yarn-install-pretty-lint-tsc-build
 
   publish:
     docker:
-      - image: cimg/node:14.17.0
+      - image: cimg/node:14.17
     steps:
       - checkout
-      - run:
-          name: install envsubst
-          command: apt-get install gettext-base
       - run:
           name: envsubst
           command: envsubst < package.json > package.json.tmp && mv package.json.tmp package.json 
