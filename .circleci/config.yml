@@ -33,6 +33,9 @@ jobs:
     steps:
       - checkout
       - run:
+          name: install envsubst
+          command: npm install envsub
+      - run:
           name: envsubst
           command: envsubst < package.json > package.json.tmp && mv package.json.tmp package.json 
       - yarn-install-pretty-lint-tsc-build
