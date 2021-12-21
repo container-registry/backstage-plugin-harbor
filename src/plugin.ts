@@ -34,6 +34,7 @@ export const harborPlugin = createPlugin({
 
 export const EntityHarborContent = harborPlugin.provide(
   createRoutableExtension({
+    name: "HarborPage",
     component: () => import("./Router").then((m) => m.Router),
     mountPoint: entityContentRouteRef,
   })
@@ -41,6 +42,7 @@ export const EntityHarborContent = harborPlugin.provide(
 
 export const EntityHarborWidgetCard = harborPlugin.provide(
   createComponentExtension({
+    name: "HarborPage",
     component: {
       lazy: () =>
         import("./components/HarborWidget").then((m) => m.HarborWidget),

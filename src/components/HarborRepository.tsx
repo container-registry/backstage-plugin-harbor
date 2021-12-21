@@ -40,7 +40,7 @@ function HarborRepository(props: RepositoryProps) {
     }, 1000);
   }, [props.project, props.repository]);
 
-  if (!loading && Object.keys(repository).length > 0) {
+  if (!loading) {
     return <div>Loading...</div>;
   }
   if (error) {

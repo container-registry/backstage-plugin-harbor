@@ -19,6 +19,10 @@ commands:
           name: build package
           command: |
             yarn build  
+      - run:
+          name: yarn test
+          command: |
+            yarn test
 jobs:
   test:
     docker:
