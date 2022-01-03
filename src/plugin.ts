@@ -15,7 +15,7 @@ export const isHarborAvailable = (entity: Entity) =>
   Boolean(entity?.metadata.annotations?.[HARBOR_ANNOTATION_REPOSITORY]);
 
 export const entityContentRouteRef = createRouteRef({
-  title: "Harbor Entity Content",
+  id: "Harbor Entity Content",
 });
 
 export const harborPlugin = createPlugin({
