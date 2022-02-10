@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
-import { Progress, Table } from '@backstage/core-components';
-import { columns } from './tableHeadings';
-import ReactSpeedometer from 'react-d3-speedometer';
-import { Card, CardActions, Button } from '@material-ui/core';
+import { Progress, Table } from "@backstage/core-components";
+import { columns } from "./tableHeadings";
+import ReactSpeedometer from "react-d3-speedometer";
+import { Card, CardActions, Button } from "@material-ui/core";
 
 function HarborRepository(props: RepositoryProps) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
+  const [errorMsg, setErrorMsg] = useState("");
   const [repository, setRepository] = useState<Repository[]>([]);
 
   useEffect(() => {
@@ -16,15 +16,15 @@ function HarborRepository(props: RepositoryProps) {
 
     async function getRepository() {
       let backendUrl = window.location.origin;
-      if (backendUrl.includes('3000')) {
-        backendUrl = backendUrl.replace('3000', '7000');
+      if (backendUrl.includes("3000")) {
+        backendUrl = backendUrl.replace("3000", "7000");
       }
       const response = await fetch(
-        `${backendUrl}/api/harbor/artifacts?project=${props.project}&repository=${props.repository}`,
+        `${backendUrl}/api/harbor/artifacts?project=${props.project}&repository=${props.repository}`
       );
       const json = await response.json();
 
-      if (json.hasOwnProperty('error')) {
+      if (json.hasOwnProperty("error")) {
         setError(true);
         setErrorMsg(json.error.message);
       }
@@ -52,19 +52,19 @@ function HarborRepository(props: RepositoryProps) {
     let severityNumber: number = 0;
     const severityText: string = repository[0]?.vulnerabilities.severity;
     switch (severityText) {
-      case 'Low':
+      case "Low":
         severityNumber = 150;
         break;
 
-      case 'Medium':
+      case "Medium":
         severityNumber = 250;
         break;
 
-      case 'High':
+      case "High":
         severityNumber = 350;
         break;
 
-      case 'Critical':
+      case "Critical":
         severityNumber = 450;
         break;
 
@@ -76,9 +76,9 @@ function HarborRepository(props: RepositoryProps) {
     return (
       <div
         style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center',
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <ReactSpeedometer
@@ -87,29 +87,29 @@ function HarborRepository(props: RepositoryProps) {
           minValue={0}
           maxValue={500}
           segmentColors={[
-            '#6ad72d',
-            '#ade228',
-            '#ecdb23',
-            '#f6961e',
-            '#ff471a',
+            "#6ad72d",
+            "#ade228",
+            "#ecdb23",
+            "#f6961e",
+            "#ff471a",
           ]}
           customSegmentStops={[0, 100, 200, 300, 400, 500]}
           currentValueText="vulnerability levels"
           customSegmentLabels={[
             {
-              text: 'None',
+              text: "None",
             },
             {
-              text: 'Low',
+              text: "Low",
             },
             {
-              text: 'Medium',
+              text: "Medium",
             },
             {
-              text: 'High',
+              text: "High",
             },
             {
-              text: 'Critical',
+              text: "Critical",
             },
           ]}
         />
@@ -127,7 +127,7 @@ function HarborRepository(props: RepositoryProps) {
         </CardActions>
       </Card>
       <Table
-        options={{ paging: false, search: false, padding: 'dense' }}
+        options={{ paging: false, search: false, padding: "dense" }}
         columns={columns}
         data={repository}
       />
