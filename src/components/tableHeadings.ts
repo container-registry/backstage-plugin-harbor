@@ -1,64 +1,51 @@
-export const columns = [
+import { TableColumn } from '@backstage/core-components';
+
+export const columns: TableColumn[] = [
   {
-    name: "Tag name",
-    selector: "tag",
+    title: 'Tag title',
+    field: 'tag',
+    type: 'string',
   },
   {
-    name: "Size MB",
-    selector: "size",
+    title: 'Size MB',
+    field: 'size',
+    type: 'numeric',
   },
   {
-    name: "Vulnerabilities severity",
-    selector: "vulnerabilities.severity",
-    conditionalCellStyles: [
-      {
-        when: (row: { vulnerabilities: { severity: string } }) =>
-          row.vulnerabilities.severity === "None",
-        style: {
-          backgroundColor: "rgb(106, 215, 45)",
-        },
-      },
-      {
-        when: (row: { vulnerabilities: { severity: string } }) =>
-          row.vulnerabilities.severity === "Low",
-        style: {
-          backgroundColor: "rgb(173, 226, 40)",
-        },
-      },
-      {
-        when: (row: { vulnerabilities: { severity: string } }) =>
-          row.vulnerabilities.severity === "Medium",
-        style: {
-          backgroundColor: "rgb(236, 219, 35)",
-        },
-      },
-      {
-        when: (row: { vulnerabilities: { severity: string } }) =>
-          row.vulnerabilities.severity === "High",
-        style: {
-          backgroundColor: "rgb(246, 150, 30)",
-        },
-      },
-      {
-        when: (row: { vulnerabilities: { severity: string } }) =>
-          row.vulnerabilities.severity === "Critical",
-        style: {
-          backgroundColor: "rgb(255, 71, 26)",
-        },
-      },
-    ],
+    title: 'Vulnerabilities severity',
+    field: 'vulnerabilities.severity',
+    type: 'string',
+    cellStyle: (_, rowData: any & { tableData: { id: number } }) => {
+      if (rowData.vulnerabilities.severity === 'Low') {
+        return { backgroundColor: 'rgb(173, 226, 40)' };
+      }
+      if (rowData?.vulnerabilities.severity === 'Medium') {
+        return { backgroundColor: 'rgb(236, 219, 35)' };
+      }
+      if (rowData?.vulnerabilities.severity === 'High') {
+        return { backgroundColor: 'rgb(246, 150, 30)' };
+      }
+      if (rowData?.vulnerabilities?.severity === 'Critical') {
+        return { backgroundColor: 'rgb(255, 71, 26)' };
+      }
+      return { backgroundColor: 'rgb(106, 215, 45)' };
+    },
   },
   {
-    name: "Total Vulnerabilities",
-    selector: "vulnerabilities.count",
+    title: 'Total Vulnerabilities',
+    field: 'vulnerabilities.count',
+    type: 'numeric',
   },
 
   {
-    name: "Push Time",
-    selector: "pushTime",
+    title: 'Push Time',
+    field: 'pushTime',
+    type: 'datetime',
+    sorting: true,
   },
   {
-    name: "Pull Time",
-    selector: "pullTime",
+    title: 'Pull Time',
+    field: 'pullTime',
+    type: 'datetime',
   },
 ];
