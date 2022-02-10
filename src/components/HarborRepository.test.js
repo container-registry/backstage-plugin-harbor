@@ -47,7 +47,6 @@ describe("Harbor Repository", () => {
         />
       )
     );
-    expect(screen.getByText("Loading...")).toBeInTheDocument();
 
     await act(() => sleep(1000));
 
