@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import { Progress, Table } from "@backstage/core-components";
 import { columns } from "./tableHeadings";
 import ReactSpeedometer from "react-d3-speedometer";
-import { Card, CardActions, Button } from "@material-ui/core";
 
 function HarborRepository(props: RepositoryProps) {
   const [loading, setLoading] = useState(false);
@@ -119,15 +118,9 @@ function HarborRepository(props: RepositoryProps) {
 
   return (
     <div>
-      <Card>
-        <CardActions>
-          <Button size="small">
-            <a href={repository[0]?.repoUrl}>Learn More</a>
-          </Button>
-        </CardActions>
-      </Card>
       <Table
         options={{ paging: false, search: false, padding: "dense" }}
+        title="Docker Images"
         columns={columns}
         data={repository}
       />
