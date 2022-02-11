@@ -50,7 +50,7 @@ describe("Harbor Repository", () => {
 
     await act(() => sleep(1000));
 
-    expect(screen.getByText("Learn More")).toBeInTheDocument();
+    expect(screen.getAllByText("Learn More")[0]).toBeInTheDocument();
     expect(screen.getByText("Docker Images")).toBeInTheDocument();
     expect(
       screen.getByText("bc6c74ba26c044e61d1cb83f4273c2847c9cc8db")
