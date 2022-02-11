@@ -1,7 +1,6 @@
 import React from "react";
 import { Entity } from "@backstage/catalog-model";
 
-
 import { HarborRepository } from "./HarborRepository";
 import { useHarborAppData } from "./useHarborAppData";
 
@@ -13,10 +12,10 @@ export const HarborDashboardPage = ({ entity }: { entity: Entity }) => {
   const repository = info.join("/");
 
   return (
-      <HarborRepository
-        project={project}
-        repository={repository}
-        widget={false}
-      />
+    <HarborRepository
+      project={project}
+      repository={repository}
+      widget={false}
+    />
   );
 };
