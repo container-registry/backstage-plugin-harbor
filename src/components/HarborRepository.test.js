@@ -64,3 +64,24 @@ describe("Harbor Repository", () => {
 function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
 }
+
+describe("Harbor SpeedoMeter", () => {
+  it("loads harbor SpeedoMeter", async () => {
+    await act(async () =>
+      render(
+        <HarborRepository project="project" repository="component" widget />
+      )
+    );
+
+    await act(() => sleep(1000));
+
+    // expect(screen.getByText("Docker Image")).toBeInTheDocument();
+    expect(screen.getByText("vulnerability levels")).toBeInTheDocument();
+
+    expect(screen.getByText("None")).toBeInTheDocument();
+    expect(screen.getByText("Low")).toBeInTheDocument();
+    expect(screen.getByText("Medium")).toBeInTheDocument();
+    expect(screen.getByText("High")).toBeInTheDocument();
+    expect(screen.getByText("Critical")).toBeInTheDocument();
+  });
+});
