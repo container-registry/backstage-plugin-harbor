@@ -120,7 +120,7 @@ function HarborRepository(props: RepositoryProps) {
     <div>
       <Table
         options={{ paging: false, search: false, padding: "dense" }}
-        title="Docker Images"
+        title={props.title}
         columns={columns}
         data={repository}
       />
@@ -128,10 +128,14 @@ function HarborRepository(props: RepositoryProps) {
   );
 }
 
+HarborRepository.defaultProps = {
+  title: "Docker Images",
+};
 interface RepositoryProps {
   widget: boolean;
   project: string;
   repository: string;
+  title: string;
 }
 
 interface Repository {
