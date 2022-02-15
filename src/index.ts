@@ -7,3 +7,4 @@ export {
 export * from "./api";
 export * from "./Router";
 export { HarborWidget, HarborWidgetEntity } from "./components/HarborWidget";
+export { HarborRepository } from "./components/HarborRepository";
