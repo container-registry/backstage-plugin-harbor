@@ -38,7 +38,7 @@
     "react-dom": "^16.13.1 || ^17.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.13.0",
+    "@backstage/cli": "^0.14.0",
     "@backstage/dev-utils": "^0.2.7",
     "@backstage/test-utils": "^0.2.0",
     "@testing-library/jest-dom": "^5.10.1",
