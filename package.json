@@ -49,7 +49,7 @@
     "@types/react-router-dom": "^5.1.7",
     "cross-fetch": "^3.0.6",
     "eslint-plugin-cypress": "2.12.1",
-    "msw": "^0.36.3",
+    "msw": "^0.39.1",
     "prettier": "^2.3.1",
     "react": "^16.13.1 || ^17.0.0",
     "react-dom": "^16.13.1 || ^17.0.0"
