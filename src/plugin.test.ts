@@ -1,7 +1,7 @@
-import { harborPlugin } from "./plugin";
+import { harborPlugin } from './plugin'
 
-describe("harbor", () => {
-  it("should export plugin", () => {
-    expect(harborPlugin).toBeDefined();
-  });
-});
+describe('harbor', () => {
+  it('should export plugin', () => {
+    expect(harborPlugin).toBeDefined()
+  })
+})

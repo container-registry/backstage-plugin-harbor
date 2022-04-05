@@ -1,25 +1,19 @@
-import { Entity } from "@backstage/catalog-model";
+import { Entity } from '@backstage/catalog-model'
 import {
   createApiFactory,
-  createPlugin,
   createComponentExtension,
-  createRoutableExtension,
-  createRouteRef,
+  createPlugin,
   discoveryApiRef,
-} from "@backstage/core-plugin-api";
-
-import { HarborApiClient, harborApiRef } from "./api";
-import { HARBOR_ANNOTATION_REPOSITORY } from "./components/useHarborAppData";
-
-export const isHarborAvailable = (entity: Entity) =>
-  Boolean(entity?.metadata.annotations?.[HARBOR_ANNOTATION_REPOSITORY]);
-
-export const entityContentRouteRef = createRouteRef({
-  id: "Harbor Entity Content",
-});
+} from '@backstage/core-plugin-api'
+import { HarborApiClient, harborApiRef } from './api'
+import { HARBOR_ANNOTATION_REPOSITORY } from './components/useHarborAppData'
+import { rootRouteRef } from './routes'
 
 export const harborPlugin = createPlugin({
-  id: "harbor",
+  id: 'backstage-plugin-harbor',
+  routes: {
+    root: rootRouteRef,
+  },
   apis: [
     createApiFactory({
       api: harborApiRef,
@@ -27,25 +21,29 @@ export const harborPlugin = createPlugin({
       factory: ({ discoveryApi }) => new HarborApiClient({ discoveryApi }),
     }),
   ],
-  routes: {
-    entityContent: entityContentRouteRef,
-  },
-});
+})
 
-export const EntityHarborContent = harborPlugin.provide(
-  createRoutableExtension({
-    name: "HarborPage",
-    component: () => import("./Router").then((m) => m.Router),
-    mountPoint: entityContentRouteRef,
-  })
-);
-
-export const EntityHarborWidgetCard = harborPlugin.provide(
+export const HarborWidget = harborPlugin.provide(
   createComponentExtension({
-    name: "HarborPage",
+    name: 'HarborWidget',
     component: {
       lazy: () =>
-        import("./components/HarborWidget").then((m) => m.HarborWidget),
+        import('./components/HarborWidget').then((m) => m.HarborWidget),
     },
   })
-);
+)
+
+export const HarborPage = harborPlugin.provide(
+  createComponentExtension({
+    name: 'HarborPage',
+    component: {
+      lazy: () =>
+        import('./components/HarborDashboardPage').then(
+          (m) => m.HarborDashboardPage
+        ),
+    },
+  })
+)
+
+export const isHarborAvailable = (entity: Entity) =>
+  Boolean(entity?.metadata.annotations?.[HARBOR_ANNOTATION_REPOSITORY])
