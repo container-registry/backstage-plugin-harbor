@@ -1,0 +1,15 @@
+HARBOR_USERNAME: &HARBOR_USERNAME admin
+HARBOR_PASSWORD: &HARBOR_PASSWORD eFQ4tPvqXOF9Z!48
+
+app:
+  baseUrl: http://localhost:3000
+
+backend:
+  baseUrl: http://localhost:7000
+  cors:
+    origin: http://localhost:3000
+
+harbor:
+  baseUrl: https://harbor.bestsellerit.com
+  username: *HARBOR_USERNAME
+  password: *HARBOR_PASSWORD
