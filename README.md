@@ -30,8 +30,8 @@ import {
 const serviceEntityPage = (
   <EntityPageLayout>
     // ...
-    <EntityLayout.Route path="/harbor" title="Harbor">
-      <EntityHarborContent />
+    <EntityLayout.Route path="/harbor" title="Harbor" if={isHarborAvailable}>
+      <HarborPage />
     </EntityLayout.Route>
   </EntityPageLayout>
 )
@@ -44,13 +44,11 @@ const serviceEntityPage = (
 const overviewContent = (
   <Grid container spacing={6} alignItems="stretch">
    // ...
-    <EntitySwitch>
-      <EntitySwitch.Case if={isHarborAvailable}>
-        <Grid item>
-         <EntityHarborWidgetCard/>
-        </Grid>
-      </EntitySwitch.Case>
-    </EntitySwitch>
+  <EntityLayout>
+    <EntityLayout.Route path="/harbor" title="Harbor" if={isHarborAvailable}>
+      <HarborPage />
+    </EntityLayout.Route>
+  </EntityLayout>
     ...
   </Grid>
 );
