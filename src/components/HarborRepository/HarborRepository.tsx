@@ -12,7 +12,7 @@ function HarborRepository(props: RepositoryProps) {
   const { loading } = useAsync(async () => {
     let backendUrl = window.location.origin
     if (backendUrl.includes('3000')) {
-      backendUrl = backendUrl.replace('3000', '7000')
+      backendUrl = backendUrl.replace('3000', '7007')
     }
     const response = await fetch(
       `${backendUrl}/api/harbor/artifacts?project=${props.project}&repository=${props.repository}`
