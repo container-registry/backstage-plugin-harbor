@@ -22,8 +22,8 @@ export { plugin as harbor } from '@bestsellerit/backstage-plugin-harbor';
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
 import {
-  EntityHarborContent,
-  EntityHarborWidgetCard,
+  HarborPage,
+  HarborWidget,
   isHarborAvailable,
 } from '@bestsellerit/backstage-plugin-harbor';
 
@@ -46,7 +46,7 @@ const overviewContent = (
    // ...
   <EntityLayout>
     <EntityLayout.Route path="/harbor" title="Harbor" if={isHarborAvailable}>
-      <HarborPage />
+      <HarborWidget />
     </EntityLayout.Route>
   </EntityLayout>
     ...
