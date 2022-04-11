@@ -1,0 +1,1 @@
+Everyone is welcome to contribute to this repository. Feel free to raise [issues](https://github.com/BESTSELLER/backstage-plugin-harbor/issues) or to submit [Pull Requests.](https://github.com/BESTSELLER/backstage-plugin-harbor/pulls)
