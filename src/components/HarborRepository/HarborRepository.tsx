@@ -1,19 +1,19 @@
 import { Progress, Table } from '@backstage/core-components'
+import { configApiRef, useApi } from '@backstage/core-plugin-api'
 import React, { useState } from 'react'
 import ReactSpeedometer from 'react-d3-speedometer'
 import { useAsync } from 'react-use'
 import { columns } from './tableHeadings'
 
-function HarborRepository(props: RepositoryProps) {
+export function HarborRepository(props: RepositoryProps) {
   const [error, setError] = useState(false)
   const [errorMsg, setErrorMsg] = useState('')
   const [repository, setRepository] = useState<Repository[]>([])
 
+  const config = useApi(configApiRef)
+  const backendUrl = config.getString('backend.baseUrl')
+
   const { loading } = useAsync(async () => {
-    let backendUrl = window.location.origin
-    if (backendUrl.includes('3000')) {
-      backendUrl = backendUrl.replace('3000', '7000')
-    }
     const response = await fetch(
       `${backendUrl}/api/harbor/artifacts?project=${props.project}&repository=${props.repository}`
     )
@@ -139,5 +139,3 @@ interface Vulnerabilities {
   count: number
   severity: string
 }
-
-export { HarborRepository }

@@ -1,6 +1,13 @@
+import { ConfigReader } from '@backstage/core-app-api'
+import { configApiRef } from '@backstage/core-plugin-api'
+import { TestApiProvider } from '@backstage/test-utils'
 import { act, render, screen } from '@testing-library/react'
 import React from 'react'
 import { HarborRepository } from './HarborRepository'
+
+const configApi = new ConfigReader({
+  backend: { baseUrl: 'http://localhost:7000' },
+})
 
 global.fetch = jest.fn(() =>
   Promise.resolve({
@@ -40,11 +47,13 @@ describe('Harbor Repository', () => {
   it('loads repo info', async () => {
     await act(async () =>
       render(
-        <HarborRepository
-          project="project"
-          repository="component"
-          widget={false}
-        />
+        <TestApiProvider apis={[[configApiRef, configApi]]}>
+          <HarborRepository
+            project="project"
+            repository="component"
+            widget={false}
+          />
+        </TestApiProvider>
       )
     )
 
