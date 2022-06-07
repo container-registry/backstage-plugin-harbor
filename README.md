@@ -1,3 +1,8 @@
+> :warning: As we are no longer using Harbor ourselves, we are looking for someone to take over the ownership of this plugin.
+>
+> If you are interested in taking the ownership of this plugin, please create an issue and tag **@BESTSELLER/engineering-services**
+
+
 # Backstage Harbor plugin 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BESTSELLER_backstage-plugin-harbor&metric=alert_status)](https://sonarcloud.io/dashboard?id=BESTSELLER_backstage-plugin-harbor)
 ![npm](https://img.shields.io/npm/dt/@bestsellerit/backstage-plugin-harbor)
