@@ -1,6 +1,6 @@
 > :warning: As we are no longer using Harbor ourselves, we are looking for someone to take over the ownership of this plugin.
 >
-> If you are interested in taking the ownership of this plugin, please create an issue and tag **@BESTSELLER/engineering-services**
+> If you are interested in taking the ownership of this plugin, please reach out to us at EngineeringServices@bestseller.com
 
 
 # Backstage Harbor plugin 
