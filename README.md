@@ -1,8 +1,3 @@
-> :warning: As we are no longer using Harbor ourselves, we are looking for someone to take over the ownership of this plugin.
->
-> If you are interested in taking the ownership of this plugin, please reach out to us at EngineeringServices@bestseller.com
-
-
 # Backstage Harbor plugin 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BESTSELLER_backstage-plugin-harbor&metric=alert_status)](https://sonarcloud.io/dashboard?id=BESTSELLER_backstage-plugin-harbor)
 ![npm](https://img.shields.io/npm/dt/@bestsellerit/backstage-plugin-harbor)
@@ -120,3 +115,8 @@ metadata:
 
 ## Contributing
 Everyone is welcome to contribute to this repository. Feel free to raise [issues](https://github.com/BESTSELLER/backstage-plugin-harbor/issues) or to submit [Pull Requests.](https://github.com/BESTSELLER/backstage-plugin-harbor/pulls)
+
+## History
+
+This backsage plugin was initialy created by [BESTSELLER](https://github.com/BESTSELLER) and transfered to us.
+
