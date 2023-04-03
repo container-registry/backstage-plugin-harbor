@@ -4,6 +4,7 @@ import {
   createComponentExtension,
   createPlugin,
   discoveryApiRef,
+  fetchApiRef,
 } from '@backstage/core-plugin-api'
 import { HarborApiClient, harborApiRef } from './api'
 import { HARBOR_ANNOTATION_REPOSITORY } from './components/useHarborAppData'
@@ -17,8 +18,9 @@ export const harborPlugin = createPlugin({
   apis: [
     createApiFactory({
       api: harborApiRef,
-      deps: { discoveryApi: discoveryApiRef },
-      factory: ({ discoveryApi }) => new HarborApiClient({ discoveryApi }),
+      deps: { discoveryApi: discoveryApiRef, fetchApi: fetchApiRef },
+      factory: ({ discoveryApi, fetchApi }) =>
+        new HarborApiClient({ discoveryApi, fetchApi }),
     }),
   ],
 })
