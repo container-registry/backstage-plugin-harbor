@@ -1,5 +1,5 @@
 import { Progress, Table } from '@backstage/core-components'
-import { configApiRef, useApi } from '@backstage/core-plugin-api'
+import { configApiRef, fetchApiRef, useApi } from '@backstage/core-plugin-api'
 import React, { useState } from 'react'
 import ReactSpeedometer from 'react-d3-speedometer'
 import { useAsync } from 'react-use'
@@ -11,10 +11,11 @@ export function HarborRepository(props: RepositoryProps) {
   const [repository, setRepository] = useState<Repository[]>([])
 
   const config = useApi(configApiRef)
+  const fetchApi = useApi(fetchApiRef)
   const backendUrl = config.getString('backend.baseUrl')
 
   const { loading } = useAsync(async () => {
-    const response = await fetch(
+    const response = await fetchApi.fetch(
       `${backendUrl}/api/harbor/artifacts?project=${props.project}&repository=${props.repository}`
     )
     const json = await response.json()
