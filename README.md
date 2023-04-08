@@ -1,6 +1,8 @@
 # Backstage Harbor plugin
 
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BESTSELLER_backstage-plugin-harbor&metric=alert_status)](https://sonarcloud.io/dashboard?id=BESTSELLER_backstage-plugin-harbor)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=container-registry_backstage-plugin-harbor&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=container-registry_backstage-plugin-harbor)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=container-registry_backstage-plugin-harbor&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=container-registry_backstage-plugin-harbor)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=container-registry_backstage-plugin-harbor&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=container-registry_backstage-plugin-harbor)
 ![npm](https://img.shields.io/npm/dt/@bestsellerit/backstage-plugin-harbor)
 
 Welcome to the harbor plugin!
