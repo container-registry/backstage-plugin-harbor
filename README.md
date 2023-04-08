@@ -1,4 +1,5 @@
-# Backstage Harbor plugin 
+# Backstage Harbor plugin
+
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=BESTSELLER_backstage-plugin-harbor&metric=alert_status)](https://sonarcloud.io/dashboard?id=BESTSELLER_backstage-plugin-harbor)
 ![npm](https://img.shields.io/npm/dt/@bestsellerit/backstage-plugin-harbor)
 
@@ -10,22 +11,24 @@ This plugin will show you information about your docker images within harbor
 
 ## Getting started
 
-### Enabling frontend 
+### Enabling frontend
+
 ```bash
-cd package/app
-yarn add @bestsellerit/backstage-plugin-harbor
+yarn --cwd packages/app add @bestsellerit/backstage-plugin-harbor
 ```
+
 ```ts
 // packages/app/src/plugins.ts
-export { plugin as harbor } from '@bestsellerit/backstage-plugin-harbor';
+export { plugin as harbor } from '@bestsellerit/backstage-plugin-harbor'
 ```
+
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
 import {
   HarborPage,
   HarborWidget,
   isHarborAvailable,
-} from '@bestsellerit/backstage-plugin-harbor';
+} from '@bestsellerit/backstage-plugin-harbor'
 
 const serviceEntityPage = (
   <EntityPageLayout>
@@ -37,42 +40,40 @@ const serviceEntityPage = (
 )
 ```
 
-
 ```ts
 // packages/app/src/components/catalog/EntityPage.tsx
 
 const overviewContent = (
   <Grid container spacing={6} alignItems="stretch">
-   // ...
-  <EntityLayout>
-    <EntityLayout.Route path="/harbor" title="Harbor" if={isHarborAvailable}>
-      <HarborWidget />
-    </EntityLayout.Route>
-  </EntityLayout>
+    // ...
+    <EntityLayout>
+      <EntityLayout.Route path="/harbor" title="Harbor" if={isHarborAvailable}>
+        <HarborWidget />
+      </EntityLayout.Route>
+    </EntityLayout>
     ...
   </Grid>
-);
+)
 ```
 
 ### Enabling backend
 
 ```bash
-cd packages/backend
-yarn add @bestsellerit/backstage-plugin-harbor-backend
+yarn --cwd packages/backend @bestsellerit/backstage-plugin-harbor-backend
 ```
 
 Create a new file named `packages/backend/src/plugins/harbor.ts`, and add the following to it
 
 ```ts
-import { createRouter } from '@bestsellerit/backstage-plugin-harbor-backend';
-import { Router } from 'express';
-import { PluginEnvironment } from '../types';
+import { createRouter } from '@bestsellerit/backstage-plugin-harbor-backend'
+import { Router } from 'express'
+import { PluginEnvironment } from '../types'
 
 export default async function createPlugin({
   logger,
   config,
 }: PluginEnvironment): Promise<Router> {
-  return await createRouter({ logger, config });
+  return await createRouter({ logger, config })
 }
 ```
 
@@ -88,35 +89,35 @@ async function main() {
 
 ```
 
-
 ## Configuration
+
 The plugin requires configuration in the Backstage app-config.yaml to connect to harbors API.
 
 ```yaml
 harbor:
   baseUrl: https://harbor.yourdomain.com
-  username: 
+  username:
     $env: HARBOR_USERNAME
   password:
     $env: HARBOR_PASSWORD
-
 ```
 
 Adding annotations and values to your component file.
+
 ```yaml
 apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: sample-system
-  description: "A sample system"
+  description: 'A sample system'
   annotations:
     goharbor.io/repository-slug: project/repository
 ```
 
 ## Contributing
+
 Everyone is welcome to contribute to this repository. Feel free to raise [issues](https://github.com/BESTSELLER/backstage-plugin-harbor/issues) or to submit [Pull Requests.](https://github.com/BESTSELLER/backstage-plugin-harbor/pulls)
 
 ## History
 
 This backsage plugin was initialy created by [BESTSELLER](https://github.com/BESTSELLER) and transfered to us.
-
