@@ -48,11 +48,13 @@ const serviceEntityPage = (
 const overviewContent = (
   <Grid container spacing={6} alignItems="stretch">
     // ...
-    <EntityLayout>
-      <EntityLayout.Route path="/harbor" title="Harbor" if={isHarborAvailable}>
-        <HarborWidget />
-      </EntityLayout.Route>
-    </EntityLayout>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isHarborAvailable}>
+        <Grid item>
+          <HarborWidget />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
     ...
   </Grid>
 )
