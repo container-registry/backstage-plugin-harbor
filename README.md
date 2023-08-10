@@ -48,11 +48,13 @@ const serviceEntityPage = (
 const overviewContent = (
   <Grid container spacing={6} alignItems="stretch">
     // ...
-    <EntityLayout>
-      <EntityLayout.Route path="/harbor" title="Harbor" if={isHarborAvailable}>
-        <HarborWidget />
-      </EntityLayout.Route>
-    </EntityLayout>
+    <EntitySwitch>
+      <EntitySwitch.Case if={isHarborAvailable}>
+        <Grid item>
+          <HarborWidget />
+        </Grid>
+      </EntitySwitch.Case>
+    </EntitySwitch>
     ...
   </Grid>
 )
@@ -61,7 +63,7 @@ const overviewContent = (
 ### Enabling backend
 
 ```bash
-yarn --cwd packages/backend @bestsellerit/backstage-plugin-harbor-backend
+yarn --cwd packages/backend add @bestsellerit/backstage-plugin-harbor-backend
 ```
 
 Create a new file named `packages/backend/src/plugins/harbor.ts`, and add the following to it
@@ -108,10 +110,10 @@ Adding annotations and values to your component file.
 
 ```yaml
 apiVersion: backstage.io/v1alpha1
-kind: System
+kind: Component
 metadata:
-  name: sample-system
-  description: 'A sample system'
+  name: sample-component
+  description: 'A sample component with Harbor'
   annotations:
     goharbor.io/repository-slug: project/repository
 ```
