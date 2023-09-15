@@ -54,7 +54,7 @@ export const columns: TableColumn[] = [
     field: 'repoUrl',
     render: (rowData: any) => (
       <Button
-        to={`${rowData.repoUrl}/artifacts/${rowData.tag}`}
+        to={`${rowData.repoUrl}/artifacts-tab/artifacts/${rowData.artifactDigest}`}
         color="primary"
         variant="contained"
       >
