@@ -24,6 +24,10 @@ export function HarborRepository(props: RepositoryProps) {
       setError(true)
       setErrorMsg(json.error.message)
     }
+
+    json.pushTime = new Date(json.pushTime).toLocaleDateString()
+    json.pullTime = new Date(json.pullTime).toLocaleDateString()
+
     setRepository(json)
   }, [props.project, props.repository])
 
