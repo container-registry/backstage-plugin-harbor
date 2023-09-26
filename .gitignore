@@ -107,3 +107,5 @@ dist
 yarn.lock
 
 dist-types/
+
+.idea
