@@ -1,7 +1,7 @@
 import { Entity } from '@backstage/catalog-model'
 import { MissingAnnotationEmptyState } from '@backstage/core-components'
 import { useEntity } from '@backstage/plugin-catalog-react'
-import { Card, CardHeader } from '@material-ui/core'
+import { Card, CardHeader, Grid } from '@material-ui/core'
 import React from 'react'
 import { isHarborAvailable } from '../../plugin'
 import { HarborRepository } from '../HarborRepository'
@@ -12,15 +12,29 @@ import {
 
 const Widget = ({ entity }: { entity: Entity }) => {
   const { repositorySlug } = useHarborAppData({ entity })
-  const info = repositorySlug.split('/')
-
-  const project = info.shift() as 'string'
-  const repository = info.join('/')
 
   return (
     <Card>
-      <CardHeader title="Docker Image" />
-      <HarborRepository project={project} repository={repository} widget />
+      <CardHeader title="Vulnerabilities in Docker Images" />
+      <Grid container>
+        {repositorySlug.split(', ').map((slug) => {
+          const info = slug.split('/')
+          const host: string = info.length > 2 ? info.shift() : ''
+          const project: string = info.shift()
+          const repository: string = info.join('/')
+
+          return (
+            <Grid item>
+              <HarborRepository
+                host={host}
+                project={project}
+                repository={repository}
+                widget
+              />
+            </Grid>
+          )
+        })}
+      </Grid>
     </Card>
   )
 }

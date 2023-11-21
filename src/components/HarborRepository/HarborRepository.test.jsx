@@ -49,6 +49,7 @@ describe('Harbor Repository', () => {
       render(
         <TestApiProvider apis={[[configApiRef, configApi]]}>
           <HarborRepository
+            host="host"
             project="project"
             repository="component"
             widget={false}
