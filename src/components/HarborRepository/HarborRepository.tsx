@@ -15,9 +15,11 @@ export function HarborRepository(props: RepositoryProps) {
   const backendUrl = config.getString('backend.baseUrl')
 
   const { loading } = useAsync(async () => {
-    const response = await fetchApi.fetch(
-      `${backendUrl}/api/harbor/artifacts?project=${props.project}&repository=${props.repository}`
-    )
+    let fetchUrl = `${backendUrl}/api/harbor/artifacts?project=${props.project}&repository=${props.repository}`
+    if (props.host) {
+      fetchUrl = fetchUrl.concat(`&host=${props.host}`)
+    }
+    const response = await fetchApi.fetch(fetchUrl)
     const json = await response.json()
 
     if (json.hasOwnProperty('error')) {
@@ -74,7 +76,9 @@ export function HarborRepository(props: RepositoryProps) {
       >
         <ReactSpeedometer
           value={severityNumber}
-          width={450}
+          width={300}
+          height={200}
+          ringWidth={50}
           minValue={0}
           maxValue={500}
           segmentColors={[
@@ -85,7 +89,9 @@ export function HarborRepository(props: RepositoryProps) {
             '#ff471a',
           ]}
           customSegmentStops={[0, 100, 200, 300, 400, 500]}
-          currentValueText="vulnerability levels"
+          currentValueText={`${props.host}${props.host ? '/' : ''}${
+            props.project
+          }/${props.repository}`}
           customSegmentLabels={[
             {
               text: 'None',
@@ -125,6 +131,7 @@ HarborRepository.defaultProps = {
 }
 interface RepositoryProps {
   widget: boolean
+  host: string
   project: string
   repository: string
   title: string

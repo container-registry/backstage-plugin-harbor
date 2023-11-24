@@ -63,61 +63,7 @@ const overviewContent = (
 
 ### Enabling backend
 
-```bash
-yarn --cwd packages/backend add @bestsellerit/backstage-plugin-harbor-backend
-```
-
-Create a new file named `packages/backend/src/plugins/harbor.ts`, and add the following to it
-
-```ts
-import { createRouter } from '@bestsellerit/backstage-plugin-harbor-backend'
-import { Router } from 'express'
-import { PluginEnvironment } from '../types'
-
-export default async function createPlugin({
-  logger,
-  config,
-}: PluginEnvironment): Promise<Router> {
-  return await createRouter({ logger, config })
-}
-```
-
-And finally, wire this into the overall backend router. Edit `packages/backend/src/index.ts`
-
-```ts
-import harbor from './plugins/harbor';
-// ...
-async function main() {
-  // ...
-  const harborEnv = useHotMemoize(module, () => createEnv('harbor'));
-  apiRouter.use('/harbor', await harbor(harborEnv));
-
-```
-
-## Configuration
-
-The plugin requires configuration in the Backstage app-config.yaml to connect to harbors API.
-
-```yaml
-harbor:
-  baseUrl: https://harbor.yourdomain.com
-  username:
-    $env: HARBOR_USERNAME
-  password:
-    $env: HARBOR_PASSWORD
-```
-
-Adding annotations and values to your component file.
-
-```yaml
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: sample-component
-  description: 'A sample component with Harbor'
-  annotations:
-    goharbor.io/repository-slug: project/repository
-```
+See [backstage-plugin-harbor-backend](https://github.com/container-registry/backstage-plugin-harbor-backend#enabling-backend).
 
 ## Contributing
 
