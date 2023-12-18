@@ -12,8 +12,8 @@ export const HarborDashboardPage = () => {
     <Grid container spacing={3}>
       {repositorySlug.split(', ').map((slug) => {
         const info = slug.split('/')
-        const host: string = info.length > 2 ? info.shift() : ''
-        const project: string = info.shift()
+        const host: string = info.length > 2 ? info.shift() as string : ''
+        const project: string = info.shift() as string
         const repository: string = info.join('/')
 
         return (
