@@ -19,6 +19,7 @@ export type Options = {
 export class HarborApiClient implements harborApi {
   // @ts-ignore
   private readonly discoveryApi: DiscoveryApi
+  // @ts-ignore
   private readonly fetchApi: FetchApi
 
   constructor(options: Options) {
