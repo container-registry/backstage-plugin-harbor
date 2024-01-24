@@ -89,9 +89,7 @@ export function HarborRepository(props: RepositoryProps) {
             '#ff471a',
           ]}
           customSegmentStops={[0, 100, 200, 300, 400, 500]}
-          currentValueText={`${props.host}${props.host ? '/' : ''}${
-            props.project
-          }/${props.repository}`}
+          currentValueText={truncateGraphDescription(props.host, props.project, props.repository)}
           customSegmentLabels={[
             {
               text: 'None',
@@ -124,6 +122,20 @@ export function HarborRepository(props: RepositoryProps) {
       />
     </div>
   )
+}
+
+function truncateGraphDescription (host: string, project: string, repository: string) {
+  let descriptionString = `${host}${host ? '/' : ''}${
+    project
+  }/${repository}`
+  if (descriptionString.length > 38) {
+    descriptionString = `${project}/${repository}`
+    if (descriptionString.length > 38) {
+      return repository
+    }
+    return descriptionString
+  }
+  return descriptionString;
 }
 
 HarborRepository.defaultProps = {
