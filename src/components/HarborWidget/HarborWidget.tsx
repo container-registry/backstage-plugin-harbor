@@ -1,5 +1,5 @@
 import { Entity } from '@backstage/catalog-model'
-import { MissingAnnotationEmptyState } from '@backstage/core-components'
+import { MissingAnnotationEmptyState } from '@backstage/plugin-catalog-react'
 import { useEntity } from '@backstage/plugin-catalog-react'
 import { Card, CardHeader, Grid } from '@material-ui/core'
 import React from 'react'
@@ -15,7 +15,7 @@ const Widget = ({ entity }: { entity: Entity }) => {
 
   return (
     <Card>
-      <CardHeader title="Vulnerabilities in Docker Images" />
+      <CardHeader title="Vulnerabilities in latest Docker Image" />
       <Grid container>
         {repositorySlug.split(', ').map((slug) => {
           const info = slug.split('/')
