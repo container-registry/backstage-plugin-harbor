@@ -76,8 +76,8 @@ export function HarborRepository(props: RepositoryProps) {
       >
         <ReactSpeedometer
           value={severityNumber}
-          width={300}
-          height={200}
+          width={props.width ? props.width : 300}
+          height={props.height ? props.height : 200}
           ringWidth={50}
           minValue={0}
           maxValue={500}
@@ -147,6 +147,8 @@ interface RepositoryProps {
   project: string
   repository: string
   title: string
+  width?: number
+  height?: number
 }
 
 interface Repository {
