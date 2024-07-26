@@ -1,15 +1,26 @@
 {
   "name": "@bestsellerit/backstage-plugin-harbor",
   "version": "${CIRCLE_TAG}",
-  "main": "src/index.ts",
-  "types": "src/index.ts",
+  "main": "dist/index.esm.js",
+  "types": "dist/index.d.ts",
   "license": "Apache-2.0",
-  "repository": "git://github.com/BESTSELLER/backstage-plugin-harbor.git",
+  "repository": {
+    "type": "git",
+    "directory": "."
+  },
   "publishConfig": {
     "access": "public",
     "main": "dist/index.esm.js",
     "types": "dist/index.d.ts"
   },
+  "backstage": {
+    "role": "frontend-plugin",
+    "pluginId": "harbor",
+    "pluginPackages": [
+      "@bestsellerit/backstage-plugin-harbor"
+    ]
+  },
+  "sideEffects": false,
   "scripts": {
     "build": "backstage-cli package build",
     "start": "backstage-cli package start",
@@ -20,15 +31,16 @@
     "clean": "backstage-cli package clean"
   },
   "dependencies": {
-    "@backstage/catalog-model": "^1.0.0",
-    "@backstage/core-components": "^0.14.0",
-    "@backstage/core-plugin-api": "^1.0.0",
-    "@backstage/plugin-catalog-react": "^1.0.0",
-    "@backstage/theme": "^0.4.0",
+    "@backstage/catalog-model": "^1.5.0",
+    "@backstage/core-components": "^0.14.9",
+    "@backstage/core-plugin-api": "^1.9.3",
+    "@backstage/plugin-catalog-react": "^1.12.2",
+    "@backstage/theme": "^0.5.6",
     "@material-ui/core": "^4.12.4",
     "d3-selection": "^3",
     "d3-transition": "^3",
     "react-d3-speedometer": "^2",
+    "react-router-dom": "^6.25.1",
     "react-use": "^17.2.4"
   },
   "peerDependencies": {
@@ -36,10 +48,10 @@
     "react-dom": "^16.13.1 || ^17.0.0"
   },
   "devDependencies": {
-    "@backstage/cli": "^0.25.2",
-    "@backstage/core-app-api": "^1.0.0",
-    "@backstage/dev-utils": "^1.0.0",
-    "@backstage/test-utils": "^1.0.0",
+    "@backstage/cli": "^0.26.11",
+    "@backstage/core-app-api": "^1.14.1",
+    "@backstage/dev-utils": "^1.0.36",
+    "@backstage/test-utils": "^1.5.9",
     "@testing-library/jest-dom": "^6.1.5",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.2.0",
@@ -53,5 +65,6 @@
   },
   "files": [
     "dist"
-  ]
+  ],
+  "module": "./dist/index.esm.js"
 }
